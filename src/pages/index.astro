@@ -197,4 +197,18 @@ const withBase = (target: string) => {
   .cta-strip {
     background: linear-gradient(120deg, color-mix(in oklab, var(--card) 70%, var(--brand) 30%), var(--card));
   }
+
+  .cta-strip .btn {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .cta-strip .btn:hover {
+      background: var(--brand-strong);
+      border-color: var(--brand-strong);
+      color: #fff;
+    }
+  }
 </style>

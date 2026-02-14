@@ -9,24 +9,33 @@ const withBase = (target: string) => {
 };
 ---
 <BaseLayout title="LocalLaunch | Bring your business online" description="LocalLaunch builds conversion-focused websites for local service businesses." path="/">
-  <section class="section">
+  <section class="section hero">
+    <p class="kicker">Built for local service businesses</p>
     <h1>Bring your company online with LocalLaunch</h1>
-    <p class="muted">We launch lead-generating websites for local businesses in days, not months.</p>
-    <a class="btn" href={withBase('plumber/')}>View demo websites</a>
-  </section>
-
-  <section class="section">
-    <h2>Services overview</h2>
-    <div class="grid cols-3">
-      <article><h3>Website design</h3><p>Mobile-first websites tailored to your services and target area.</p></article>
-      <article><h3>SEO setup</h3><p>Local SEO structure, metadata, and copy that helps you get found.</p></article>
-      <article><h3>Lead capture</h3><p>Conversion-focused CTAs and forms so visitors turn into enquiries.</p></article>
+    <p class="muted intro">We launch lead-generating websites for local businesses in days, not months—so you can focus on jobs while we handle design, copy, and conversion setup.</p>
+    <div class="hero-actions">
+      <a class="btn" href={withBase('plumber/')}>View demo websites</a>
+      <a class="btn btn-secondary" href="#pricing">See pricing</a>
+    </div>
+    <div class="hero-metrics">
+      <article><strong>3–7 days</strong><span>Average launch time</span></article>
+      <article><strong>Mobile-first</strong><span>Built for phone enquiries</span></article>
+      <article><strong>Conversion-led</strong><span>Clear CTA and lead capture</span></article>
     </div>
   </section>
 
   <section class="section">
+    <h2>Services overview</h2>
+    <div class="grid cols-3 service-cards">
+      <article><h3>Website design</h3><p>Mobile-first websites tailored to your services, location, and ideal customer.</p></article>
+      <article><h3>SEO setup</h3><p>Local SEO structure, metadata, and copy that helps nearby customers find you.</p></article>
+      <article><h3>Lead capture</h3><p>Conversion-focused CTAs and forms so visitors turn into genuine enquiries.</p></article>
+    </div>
+  </section>
+
+  <section id="pricing" class="section">
     <h2>Simple 3-tier pricing</h2>
-    <div class="grid cols-3">
+    <div class="grid cols-3 pricing-cards">
       <article><h3>Starter</h3><p><strong>£299 setup + £39/mo</strong></p><p>Single-page site, contact form, and core SEO.</p></article>
       <article><h3>Growth</h3><p><strong>£599 setup + £79/mo</strong></p><p>Up to 5 pages, review section, FAQs, and analytics.</p></article>
       <article><h3>Scale</h3><p><strong>£999 setup + £139/mo</strong></p><p>Multi-location pages, conversion optimisation, and priority support.</p></article>
@@ -57,7 +66,7 @@ const withBase = (target: string) => {
     <h3>Do I own my website?</h3><p>Yes. Your branding and domain stay in your control.</p>
   </section>
 
-  <section class="section">
+  <section class="section cta-strip">
     <h2>Ready to get online?</h2>
     <p>Explore our local-business demo pages and request a tailored launch plan.</p>
     <div class="grid cols-3">
@@ -67,3 +76,99 @@ const withBase = (target: string) => {
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 18% 20%, rgba(116, 240, 255, 0.18), transparent 45%),
+      radial-gradient(circle at 80% 0%, rgba(46, 205, 228, 0.2), transparent 42%),
+      linear-gradient(145deg, rgba(16, 28, 46, 0.95), rgba(12, 18, 31, 0.95));
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: auto -20% -60% auto;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(116, 240, 255, 0.14), transparent 62%);
+    pointer-events: none;
+  }
+
+  .kicker {
+    margin: 0;
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--brand);
+    background: color-mix(in oklab, var(--brand) 20%, transparent);
+    border: 1px solid color-mix(in oklab, var(--brand) 40%, transparent);
+    border-radius: 999px;
+    padding: 0.25rem 0.65rem;
+  }
+
+  .intro {
+    max-width: 65ch;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin: 1.2rem 0;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--brand);
+  }
+
+  .hero-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 0.8rem;
+  }
+
+  .hero-metrics article {
+    background: color-mix(in oklab, var(--card) 78%, var(--brand) 22%);
+    border: 1px solid color-mix(in oklab, var(--border) 80%, var(--brand) 20%);
+    border-radius: 12px;
+    padding: 0.8rem 0.95rem;
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  .hero-metrics strong {
+    font-size: 1.05rem;
+  }
+
+  .hero-metrics span {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .service-cards article,
+  .pricing-cards article {
+    border-radius: 14px;
+    border: 1px solid color-mix(in oklab, var(--border) 82%, var(--brand) 18%);
+    background: linear-gradient(180deg, color-mix(in oklab, var(--brand) 8%, transparent), transparent 60%);
+    padding: 0.9rem;
+  }
+
+  .pricing-cards article {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .cta-strip {
+    background: linear-gradient(120deg, color-mix(in oklab, var(--card) 70%, var(--brand) 30%), var(--card));
+  }
+</style>

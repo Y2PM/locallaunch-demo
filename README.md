@@ -35,3 +35,4 @@ The Astro config sets `site` and `base` automatically from the `GITHUB_REPOSITOR
 The HTML forms are configured with Netlify-compatible attributes (`data-netlify="true"`).
 
 When hosted on GitHub Pages, forms will render but **will not submit to Netlify email handling**. To activate form processing/email notifications, migrate the deployed site to Netlify.
+https://y2pm.github.io/locallaunch-demo/

@@ -135,9 +135,9 @@ const withBase = (target: string) => {
   }
 
   .hero-actions .btn {
-    background: transparent;
+    background: color-mix(in oklab, var(--brand) 14%, var(--card) 86%);
     color: var(--text);
-    border: 1px solid var(--border);
+    border: 1px solid color-mix(in oklab, var(--border) 76%, var(--brand) 24%);
   }
 
   @media (hover: hover) and (pointer: fine) {
@@ -149,9 +149,9 @@ const withBase = (target: string) => {
   }
 
   .btn-secondary {
-    background: transparent;
+    background: color-mix(in oklab, var(--brand) 10%, var(--card) 90%);
     color: var(--text);
-    border: 1px solid var(--border);
+    border: 1px solid color-mix(in oklab, var(--border) 80%, var(--brand) 20%);
   }
 
   .btn-secondary:hover {
@@ -199,9 +199,9 @@ const withBase = (target: string) => {
   }
 
   .cta-strip .btn {
-    background: transparent;
+    background: color-mix(in oklab, var(--brand) 15%, var(--card) 85%);
     color: var(--text);
-    border: 1px solid var(--border);
+    border: 1px solid color-mix(in oklab, var(--border) 74%, var(--brand) 26%);
   }
 
   @media (hover: hover) and (pointer: fine) {

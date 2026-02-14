@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const baseRoot = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const thanksPath = `${baseRoot}thanks/`;
 ---
 <BaseLayout title="SafeHome Alarms Demo | LocalLaunch" description="Demo domestic burglar alarm and CCTV website for SafeHome Alarms." path="/security/">
   <section class="section">
@@ -34,7 +37,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   <section class="section">
     <h2>Request a security survey</h2>
-    <form method="POST" data-netlify="true" name="security-form" action="/thanks">
+    <form method="POST" data-netlify="true" name="security-form" action={thanksPath}>
       <input type="hidden" name="form-name" value="security-form" />
       <label for="name">Name
         <input id="name" name="name" type="text" required />

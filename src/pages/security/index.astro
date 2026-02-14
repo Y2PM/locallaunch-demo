@@ -5,9 +5,14 @@ const baseRoot = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_U
 const thanksPath = `${baseRoot}thanks/`;
 ---
 <BaseLayout title="SafeHome Alarms Demo | LocalLaunch" description="Demo domestic burglar alarm and CCTV website for SafeHome Alarms." path="/security/">
-  <section class="section">
+  <section class="section security-hero">
     <h1>SafeHome Alarms</h1>
     <p class="muted">Domestic burglar alarms, CCTV, and perimeter protection across West Yorkshire.</p>
+    <div class="status-strip">
+      <span>NSI-style installation standards</span>
+      <span>Smartphone monitoring</span>
+      <span>Police response ready</span>
+    </div>
   </section>
 
   <section class="section">
@@ -33,10 +38,10 @@ const thanksPath = `${baseRoot}thanks/`;
 
   <section class="section">
     <h2>Protection packages</h2>
-    <div class="grid cols-3">
-      <article><h3>Essentials</h3><p>Alarm hub + 2 sensors</p><p><strong>£349</strong></p></article>
-      <article><h3>Family</h3><p>Alarm + 4 sensors + outdoor siren</p><p><strong>£599</strong></p></article>
-      <article><h3>Complete</h3><p>Alarm + CCTV system + app monitoring</p><p><strong>£949</strong></p></article>
+    <div class="grid cols-3 package-grid">
+      <article><h3>Essentials</h3><p>Alarm hub + 2 sensors</p><p><strong>£349</strong></p><small>Ideal for flats and terraces</small></article>
+      <article><h3>Family</h3><p>Alarm + 4 sensors + outdoor siren</p><p><strong>£599</strong></p><small>Most popular detached-home package</small></article>
+      <article><h3>Complete</h3><p>Alarm + CCTV system + app monitoring</p><p><strong>£949</strong></p><small>Full-coverage perimeter + video evidence</small></article>
     </div>
   </section>
 
@@ -72,4 +77,36 @@ const thanksPath = `${baseRoot}thanks/`;
     border-radius: 12px;
     margin-bottom: 0.8rem;
   }
+  .security-hero {
+    background: radial-gradient(circle at 20% 15%, #213a63 0%, #0f1728 45%, #0b111e 100%);
+    border-color: #35527f;
+  }
+
+  .status-strip {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .status-strip span {
+    border: 1px solid rgba(124, 240, 170, 0.35);
+    color: #c9fadb;
+    background: rgba(124, 240, 170, 0.12);
+    border-radius: 9px;
+    padding: 0.35rem 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .package-grid article {
+    border: 1px solid rgba(124, 240, 170, 0.28);
+    border-radius: 12px;
+    padding: 1rem;
+    background: linear-gradient(180deg, rgba(124, 240, 170, 0.08), transparent 70%);
+  }
+
+  .package-grid small {
+    color: var(--muted);
+  }
+
 </style>

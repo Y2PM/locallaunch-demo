@@ -6,6 +6,7 @@ const thanksPath = `${baseRoot}thanks/`;
 ---
 <BaseLayout title="SkyScan Surveys Demo | LocalLaunch" description="Demo drone survey website for commercial and agricultural mapping services." path="/drone/">
   <section class="section drone-hero">
+    <p class="eyebrow">Precision aerial intelligence</p>
     <h1>SkyScan Drone Surveys</h1>
     <p class="muted">Drone surveys. LIDAR and multi spectral services for land, infrastructure, and planning teams.</p>
     <div class="status-row">
@@ -17,23 +18,35 @@ const thanksPath = `${baseRoot}thanks/`;
 
   <section class="section">
     <h2>Survey outputs</h2>
-    <div class="grid cols-3">
-      <article class="survey-card">
+    <div class="grid cols-3 survey-grid" data-survey-grid>
+      <article class="survey-card is-active" data-survey-card="topographic">
         <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1000&q=80" alt="Drone flying over a construction site" loading="lazy" />
         <h3>Topographic mapping</h3>
         <p class="muted">Orthomosaics and contour models for construction progress and pre-build planning.</p>
       </article>
-      <article class="survey-card">
-        <img src="https://images.unsplash.com/photo-1508614999368-9260051292e5?auto=format&fit=crop&w=1000&q=80" alt="Drone capturing aerial data above farmland" loading="lazy" />
+      <article class="survey-card" data-survey-card="multispectral">
+        <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1000&q=80" alt="Topographic survey map generated from drone data" loading="lazy" />
         <h3>Multi spectral analysis</h3>
         <p class="muted">Vegetation health maps for crop management, drainage checks, and field prioritisation.</p>
       </article>
-      <article class="survey-card">
-        <img src="https://images.unsplash.com/photo-1508449037592-1b8d5ba6f4ca?auto=format&fit=crop&w=1000&q=80" alt="Aerial view of roads and utility corridors" loading="lazy" />
+      <article class="survey-card" data-survey-card="lidar">
+        <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1000&q=80" alt="Topographic map overlays for infrastructure planning" loading="lazy" />
         <h3>LIDAR point clouds</h3>
         <p class="muted">High-density point clouds for terrain modelling, stockpile volumes, and corridor surveys.</p>
       </article>
     </div>
+
+    <aside class="output-panel" aria-live="polite">
+      <h3>Output focus</h3>
+      <div class="focus-controls" role="tablist" aria-label="Choose survey output">
+        <button class="focus-btn is-active" type="button" data-focus="topographic" role="tab" aria-selected="true">Topographic</button>
+        <button class="focus-btn" type="button" data-focus="multispectral" role="tab" aria-selected="false">Multi spectral</button>
+        <button class="focus-btn" type="button" data-focus="lidar" role="tab" aria-selected="false">LIDAR</button>
+      </div>
+      <p class="muted" data-focus-copy>
+        Topographic mapping produces accurate contours and elevation models for planning, earthworks, and progress verification.
+      </p>
+    </aside>
   </section>
 
   <section class="section">
@@ -79,10 +92,78 @@ const thanksPath = `${baseRoot}thanks/`;
   </section>
 </BaseLayout>
 
+<script>
+  const cardMap = {
+    topographic:
+      'Topographic mapping produces accurate contours and elevation models for planning, earthworks, and progress verification.',
+    multispectral:
+      'Multi spectral analysis helps teams compare vegetation vigor zones so interventions happen where they create the highest yield impact.',
+    lidar:
+      'LIDAR point clouds deliver precise 3D terrain and structure data for quantity calculations, design checks, and long-corridor projects.',
+  };
+
+  const grid = document.querySelector('[data-survey-grid]');
+  const copy = document.querySelector('[data-focus-copy]');
+  const buttons = Array.from(document.querySelectorAll('[data-focus]'));
+
+  const updateActive = (key) => {
+    if (!grid || !copy) return;
+
+    grid.querySelectorAll('[data-survey-card]').forEach((card) => {
+      const isMatch = card.getAttribute('data-survey-card') === key;
+      card.classList.toggle('is-active', isMatch);
+    });
+
+    buttons.forEach((button) => {
+      const isActive = button.getAttribute('data-focus') === key;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-selected', String(isActive));
+    });
+
+    copy.textContent = cardMap[key] ?? cardMap.topographic;
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const key = button.getAttribute('data-focus') ?? 'topographic';
+      updateActive(key);
+    });
+  });
+</script>
+
 <style>
   .drone-hero {
-    background: radial-gradient(circle at 18% 15%, #1f3b6f 0%, #12223f 45%, #0b1222 100%);
-    border-color: #2f4f87;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 18% 15%, rgba(69, 132, 255, 0.4) 0%, transparent 38%),
+      radial-gradient(circle at 85% 0%, rgba(89, 227, 255, 0.2) 0%, transparent 35%),
+      linear-gradient(145deg, #101f3d 0%, #0e172d 46%, #0a1324 100%);
+    border-color: #3d5b8e;
+  }
+
+  .drone-hero::after {
+    content: '';
+    position: absolute;
+    inset: auto -5rem -7rem auto;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(89, 227, 255, 0.2), transparent 70%);
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    margin: 0;
+    display: inline-block;
+    border: 1px solid rgba(153, 210, 255, 0.45);
+    background: rgba(123, 197, 255, 0.16);
+    border-radius: 999px;
+    padding: 0.28rem 0.72rem;
+    font-size: 0.76rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
   }
 
   .status-row {
@@ -101,12 +182,70 @@ const thanksPath = `${baseRoot}thanks/`;
     font-weight: 600;
   }
 
+  .survey-grid {
+    margin-bottom: 1rem;
+  }
+
+  .survey-card {
+    border: 1px solid rgba(129, 186, 255, 0.22);
+    border-radius: 14px;
+    padding: 0.7rem;
+    background: linear-gradient(180deg, rgba(129, 186, 255, 0.08), transparent 50%);
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  }
+
   .survey-card img {
     width: 100%;
     height: 190px;
     object-fit: cover;
     border-radius: 12px;
     margin-bottom: 0.8rem;
+  }
+
+  .survey-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(129, 186, 255, 0.52);
+  }
+
+  .survey-card.is-active {
+    border-color: rgba(105, 221, 255, 0.8);
+    box-shadow: 0 0 0 1px rgba(105, 221, 255, 0.3), 0 16px 24px rgba(8, 15, 28, 0.45);
+  }
+
+  .output-panel {
+    border: 1px solid rgba(129, 186, 255, 0.32);
+    border-radius: 14px;
+    padding: 1rem;
+    background: linear-gradient(145deg, rgba(129, 186, 255, 0.12), rgba(129, 186, 255, 0.02));
+  }
+
+  .output-panel h3 {
+    margin-top: 0;
+  }
+
+  .focus-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .focus-btn {
+    border: 1px solid rgba(129, 186, 255, 0.35);
+    background: rgba(129, 186, 255, 0.08);
+    color: var(--text);
+    border-radius: 999px;
+    padding: 0.34rem 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 160ms ease, border-color 160ms ease;
+  }
+
+  .focus-btn:hover,
+  .focus-btn.is-active {
+    border-color: rgba(105, 221, 255, 0.85);
+    background: rgba(105, 221, 255, 0.2);
   }
 
   .package-grid article {

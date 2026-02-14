@@ -7,7 +7,28 @@ const thanksPath = `${baseRoot}thanks/`;
 <BaseLayout title="SafeHome Alarms Demo | LocalLaunch" description="Demo domestic burglar alarm and CCTV website for SafeHome Alarms." path="/security/">
   <section class="section">
     <h1>SafeHome Alarms</h1>
-    <p class="muted">Domestic burglar alarms and CCTV installation for homes across West Yorkshire.</p>
+    <p class="muted">Domestic burglar alarms, CCTV, and perimeter protection across West Yorkshire.</p>
+  </section>
+
+  <section class="section">
+    <h2>Security solutions we install</h2>
+    <div class="grid cols-3">
+      <article class="security-card">
+        <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=900&q=80" alt="CCTV camera mounted outdoors" loading="lazy" />
+        <h3>CCTV cameras</h3>
+        <p class="muted">4K day/night recording with app playback and smart motion alerts.</p>
+      </article>
+      <article class="security-card">
+        <img src="https://images.unsplash.com/photo-1582139329536-e7284fece509?auto=format&fit=crop&w=900&q=80" alt="Home burglar alarm keypad" loading="lazy" />
+        <h3>Burglar alarms</h3>
+        <p class="muted">Wireless sensors, loud external sirens, and instant mobile notifications.</p>
+      </article>
+      <article class="security-card">
+        <img src="https://images.unsplash.com/photo-1597007066704-67bf2068d5b2?auto=format&fit=crop&w=900&q=80" alt="Barbed wire fence perimeter" loading="lazy" />
+        <h3>Perimeter defence</h3>
+        <p class="muted">Fence-line checks, anti-climb protection, and gate contact integration.</p>
+      </article>
+    </div>
   </section>
 
   <section class="section">
@@ -17,22 +38,6 @@ const thanksPath = `${baseRoot}thanks/`;
       <article><h3>Family</h3><p>Alarm + 4 sensors + outdoor siren</p><p><strong>£599</strong></p></article>
       <article><h3>Complete</h3><p>Alarm + CCTV system + app monitoring</p><p><strong>£949</strong></p></article>
     </div>
-  </section>
-
-  <section class="section">
-    <h2>Our process</h2>
-    <ol>
-      <li>Free home security survey and risk assessment.</li>
-      <li>Clear recommendation and fixed quote.</li>
-      <li>Professional installation and app setup in one visit.</li>
-    </ol>
-  </section>
-
-  <section class="section">
-    <h2>Trust badges</h2>
-    <p>✓ DBS-checked engineers</p>
-    <p>✓ 12-month workmanship guarantee</p>
-    <p>✓ 4.9/5 local customer rating</p>
   </section>
 
   <section class="section">
@@ -58,3 +63,13 @@ const thanksPath = `${baseRoot}thanks/`;
     </form>
   </section>
 </BaseLayout>
+
+<style>
+  .security-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 0.8rem;
+  }
+</style>

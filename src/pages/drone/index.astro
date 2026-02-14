@@ -25,12 +25,12 @@ const thanksPath = `${baseRoot}thanks/`;
         <p class="muted">Orthomosaics and contour models for construction progress and pre-build planning.</p>
       </article>
       <article class="survey-card" data-survey-card="multispectral">
-        <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1000&q=80" alt="Topographic survey map generated from drone data" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80" alt="Drone capturing crop health data over farmland" loading="lazy" />
         <h3>Multi spectral analysis</h3>
         <p class="muted">Vegetation health maps for crop management, drainage checks, and field prioritisation.</p>
       </article>
       <article class="survey-card" data-survey-card="lidar">
-        <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1000&q=80" alt="Topographic map overlays for infrastructure planning" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&w=1000&q=80" alt="Survey team reviewing 3D terrain modelling outputs" loading="lazy" />
         <h3>LIDAR point clouds</h3>
         <p class="muted">High-density point clouds for terrain modelling, stockpile volumes, and corridor surveys.</p>
       </article>
@@ -51,12 +51,42 @@ const thanksPath = `${baseRoot}thanks/`;
 
   <section class="section">
     <h2>Typical projects</h2>
-    <ul>
-      <li>Construction site progress and cut/fill calculations</li>
-      <li>Utility corridor and right-of-way inspections</li>
-      <li>Quarry and stockpile volumetric measurement</li>
-      <li>Agricultural crop health and irrigation analysis</li>
-    </ul>
+    <div class="grid cols-2 project-grid">
+      <article>
+        <h3>Construction progress tracking</h3>
+        <p class="muted">Weekly drone flights for principal contractors that compare planned versus actual earthworks, highlight cut/fill variance, and produce shareable updates for clients and stakeholders.</p>
+      </article>
+      <article>
+        <h3>Utility corridor inspections</h3>
+        <p class="muted">Long-range route capture for power, telecoms, and pipeline teams with geo-tagged imagery to identify access issues, vegetation encroachment, and maintenance priorities.</p>
+      </article>
+      <article>
+        <h3>Quarry and stockpile volumetrics</h3>
+        <p class="muted">Monthly stockpile calculations and pit progression models that improve inventory reporting accuracy and reduce the need for staff to climb unstable surfaces.</p>
+      </article>
+      <article>
+        <h3>Agricultural crop diagnostics</h3>
+        <p class="muted">Multi spectral zoning and irrigation diagnostics for growers who need to prioritise treatment, reduce input waste, and spot stress patterns before visible damage appears.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section testimonials">
+    <h2>Customer testimonials</h2>
+    <div class="grid cols-3 testimonial-grid">
+      <blockquote>
+        “SkyScan helped us prove earthworks progress without waiting for manual surveys. Their weekly reports are now part of every site meeting.”
+        <cite>— Project Manager, Calder Build Group</cite>
+      </blockquote>
+      <blockquote>
+        “The multi spectral maps showed exactly where drainage was failing. We corrected two fields early and protected this season's yield.”
+        <cite>— Farm Operations Lead, West Moor Farms</cite>
+      </blockquote>
+      <blockquote>
+        “Their LIDAR outputs dropped straight into our CAD workflow and saved days of rework. Great communication from kickoff to delivery.”
+        <cite>— Engineering Director, Northline Infrastructure</cite>
+      </blockquote>
+    </div>
   </section>
 
   <section class="section">
@@ -257,5 +287,32 @@ const thanksPath = `${baseRoot}thanks/`;
 
   .package-grid small {
     color: var(--muted);
+  }
+
+  .project-grid article,
+  .testimonial-grid blockquote {
+    border: 1px solid rgba(129, 186, 255, 0.25);
+    border-radius: 12px;
+    padding: 0.95rem;
+    background: linear-gradient(180deg, rgba(129, 186, 255, 0.06), transparent 75%);
+  }
+
+  .testimonial-grid {
+    align-items: stretch;
+  }
+
+  .testimonial-grid blockquote {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .testimonial-grid cite {
+    color: var(--muted);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.85rem;
   }
 </style>

@@ -10,12 +10,20 @@ interface Props {
 
 const { title, description, path = '/' } = Astro.props;
 const canonicalUrl = new URL(path, Astro.site ?? 'https://example.com').toString();
+const baseUrl = import.meta.env.BASE_URL;
+
+const withBase = (target: string) => {
+  const normalizedBase = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+  const normalized = target.startsWith('/') ? target.slice(1) : target;
+  return `${normalizedBase}${normalized}`;
+};
 ---
 <!doctype html>
 <html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta property="og:type" content="website" />
@@ -23,7 +31,7 @@ const canonicalUrl = new URL(path, Astro.site ?? 'https://example.com').toString
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content="/favicon.svg" />
+    <meta property="og:image" content={withBase('favicon.svg')} />
     <script is:inline>
       (() => {
         const saved = localStorage.getItem('theme');
@@ -78,17 +86,18 @@ const canonicalUrl = new URL(path, Astro.site ?? 'https://example.com').toString
   a { color: var(--brand); }
 
   .container {
-    width: min(1100px, 92vw);
+    width: min(1200px, 92vw);
     margin: 0 auto;
-    padding: 1.25rem 0 3rem;
+    padding: 1.4rem 0 4rem;
   }
 
   .section {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 1.2rem;
+    border-radius: 18px;
+    padding: 1.25rem;
     margin: 1rem 0;
+    box-shadow: 0 18px 40px -35px rgba(0, 0, 0, 0.85);
   }
 
   h1, h2, h3 { line-height: 1.2; margin-top: 0; }
@@ -105,16 +114,28 @@ const canonicalUrl = new URL(path, Astro.site ?? 'https://example.com').toString
     border-radius: 999px;
     border: none;
     cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   }
 
-  .btn:hover { background: var(--brand-strong); color: #fff; }
+  .btn:hover {
+    background: var(--brand-strong);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 12px 25px -14px color-mix(in oklab, var(--brand) 55%, black);
+  }
 
   .grid { display: grid; gap: 1rem; }
 
   @media (min-width: 768px) {
-    .section { padding: 1.7rem; margin: 1.5rem 0; }
+    .section { padding: 1.8rem; margin: 1.3rem 0; }
     .grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  @media (min-width: 1024px) {
+    body { line-height: 1.7; }
+    .container { padding-top: 2rem; }
+    .grid.cols-3 { gap: 1.2rem; }
   }
 
   input, textarea {

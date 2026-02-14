@@ -1,5 +1,18 @@
+---
+const baseUrl = import.meta.env.BASE_URL;
+const withBase = (target: string) => {
+  const normalizedBase = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+  const normalized = target.startsWith('/') ? target.slice(1) : target;
+  return `${normalizedBase}${normalized}`;
+};
+---
 <header class="site-header">
-  <a href="/" class="brand">LocalLaunch</a>
+  <a href={withBase('/')} class="brand">LocalLaunch</a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href={withBase('plumber/')}>Plumber</a>
+    <a href={withBase('takeaway/')}>Takeaway</a>
+    <a href={withBase('security/')}>Security</a>
+  </nav>
   <button id="theme-toggle" type="button" aria-label="Toggle theme">🌙</button>
 </header>
 
@@ -29,11 +42,13 @@
 
 <style>
   .site-header {
-    width: min(1100px, 92vw);
-    margin: 0.8rem auto 0;
+    width: min(1200px, 92vw);
+    margin: 1rem auto 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 0.85rem;
+    flex-wrap: wrap;
   }
 
   .brand {
@@ -41,6 +56,28 @@
     text-decoration: none;
     font-weight: 800;
     font-size: 1.2rem;
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-left: auto;
+  }
+
+  .site-nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.95rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    padding: 0.4rem 0.7rem;
+  }
+
+  .site-nav a:hover {
+    border-color: var(--border);
+    color: var(--text);
+    background: var(--bg-alt);
   }
 
   #theme-toggle {
@@ -51,5 +88,15 @@
     padding: 0.45rem 0.7rem;
     cursor: pointer;
     font-size: 1rem;
+  }
+
+  @media (max-width: 680px) {
+    .site-nav {
+      order: 3;
+      width: 100%;
+      margin-left: 0;
+      justify-content: center;
+      padding-bottom: 0.2rem;
+    }
   }
 </style>

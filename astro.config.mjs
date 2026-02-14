@@ -1,8 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-const repository = process.env.GITHUB_REPOSITORY || 'owner/locallaunch-demo';
-const [owner = 'owner', repoName = 'locallaunch-demo'] = repository.split('/');
+const repository = process.env.GITHUB_REPOSITORY || 'y2pm/locallaunch-demo';
+const [owner = 'y2pm', repoName = 'locallaunch-demo'] = repository.split('/');
 
 export default defineConfig({
   output: 'static',

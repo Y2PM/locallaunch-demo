@@ -1,11 +1,62 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
+<BaseLayout title="LocalLaunch | Bring your business online" description="LocalLaunch builds conversion-focused websites for local service businesses." path="/">
+  <section class="section">
+    <h1>Bring your company online with LocalLaunch</h1>
+    <p class="muted">We launch lead-generating websites for local businesses in days, not months.</p>
+    <a class="btn" href="/plumber/">View demo websites</a>
+  </section>
 
-<Layout>
-	<Welcome />
-</Layout>
+  <section class="section">
+    <h2>Services overview</h2>
+    <div class="grid cols-3">
+      <article><h3>Website design</h3><p>Mobile-first websites tailored to your services and target area.</p></article>
+      <article><h3>SEO setup</h3><p>Local SEO structure, metadata, and copy that helps you get found.</p></article>
+      <article><h3>Lead capture</h3><p>Conversion-focused CTAs and forms so visitors turn into enquiries.</p></article>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Simple 3-tier pricing</h2>
+    <div class="grid cols-3">
+      <article><h3>Starter</h3><p><strong>£299 setup + £39/mo</strong></p><p>Single-page site, contact form, and core SEO.</p></article>
+      <article><h3>Growth</h3><p><strong>£599 setup + £79/mo</strong></p><p>Up to 5 pages, review section, FAQs, and analytics.</p></article>
+      <article><h3>Scale</h3><p><strong>£999 setup + £139/mo</strong></p><p>Multi-location pages, conversion optimisation, and priority support.</p></article>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>How it works</h2>
+    <ol>
+      <li>Share your business details, service list, and service area.</li>
+      <li>We build and launch your new site within 5 working days.</li>
+      <li>You receive leads from forms, calls, and quote requests.</li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <h2>Testimonials</h2>
+    <div class="grid cols-2">
+      <blockquote>“We got 12 enquiries in the first week. Best marketing spend this year.” — Leeds Roofing Co</blockquote>
+      <blockquote>“The site looks premium and customers mention it on calls all the time.” — FreshFix Plumbing</blockquote>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>FAQ</h2>
+    <h3>How fast can you launch?</h3><p>Usually within 3–7 days after content approval.</p>
+    <h3>Can you update my site later?</h3><p>Yes, all plans include edits and ongoing improvements.</p>
+    <h3>Do I own my website?</h3><p>Yes. Your branding and domain stay in your control.</p>
+  </section>
+
+  <section class="section">
+    <h2>Ready to get online?</h2>
+    <p>Explore our local-business demo pages and request a tailored launch plan.</p>
+    <div class="grid cols-3">
+      <a class="btn" href="/plumber/">Plumber demo</a>
+      <a class="btn" href="/takeaway/">Takeaway demo</a>
+      <a class="btn" href="/security/">Security demo</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -135,6 +135,7 @@ const thanksPath = `${baseRoot}thanks/`;
   const grid = document.querySelector('[data-survey-grid]');
   const copy = document.querySelector('[data-focus-copy]');
   const buttons = Array.from(document.querySelectorAll('[data-focus]'));
+  const cards = Array.from(document.querySelectorAll('[data-survey-card]'));
 
   const updateActive = (key) => {
     if (!grid || !copy) return;
@@ -156,6 +157,13 @@ const thanksPath = `${baseRoot}thanks/`;
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
       const key = button.getAttribute('data-focus') ?? 'topographic';
+      updateActive(key);
+    });
+  });
+
+  cards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const key = card.getAttribute('data-survey-card') ?? 'topographic';
       updateActive(key);
     });
   });
@@ -230,6 +238,7 @@ const thanksPath = `${baseRoot}thanks/`;
     padding: 0.7rem;
     background: linear-gradient(180deg, rgba(129, 186, 255, 0.08), transparent 50%);
     transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    cursor: pointer;
   }
 
   .survey-card img {

@@ -122,11 +122,13 @@ const ogImageUrl = new URL(withBase('og-image.svg'), siteUrl).toString();
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   }
 
-  .btn:hover {
-    background: var(--brand-strong);
-    color: #fff;
-    transform: translateY(-1px);
-    box-shadow: 0 12px 25px -14px color-mix(in oklab, var(--brand) 55%, black);
+  @media (hover: hover) and (pointer: fine) {
+    .btn:hover {
+      background: var(--brand-strong);
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 12px 25px -14px color-mix(in oklab, var(--brand) 55%, black);
+    }
   }
 
   .grid { display: grid; gap: 1rem; }

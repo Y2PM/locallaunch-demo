@@ -1,46 +1,37 @@
-# Astro Starter Kit: Basics
+# LocalLaunch (Astro)
 
-```sh
-npm create astro@latest -- --template basics
+Marketing site demo for **LocalLaunch**, showcasing local business website templates for a plumber, takeaway, and security company.
+
+## Development
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Production build
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```bash
+npm run build
+npm run preview
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Pages
 
-## 🧞 Commands
+- `/` landing page
+- `/plumber/` Leeds plumber demo (Netlify-ready form)
+- `/takeaway/` Nonna's Italian Kitchen demo (Netlify-ready form)
+- `/security/` SafeHome Alarms demo (Netlify-ready form)
+- `/thanks/` post-submit thank you page
 
-All commands are run from the root of the project, from a terminal:
+## GitHub Pages deployment
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+A workflow is provided in `.github/workflows/deploy.yml` that builds and deploys the generated `dist/` output to GitHub Pages on every push to `main`.
 
-## 👀 Want to learn more?
+The Astro config sets `site` and `base` automatically from the `GITHUB_REPOSITORY` environment variable during CI so project-page deployments resolve correctly.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Forms note
+
+The HTML forms are configured with Netlify-compatible attributes (`data-netlify="true"`).
+
+When hosted on GitHub Pages, forms will render but **will not submit to Netlify email handling**. To activate form processing/email notifications, migrate the deployed site to Netlify.

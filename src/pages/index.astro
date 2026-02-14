@@ -88,6 +88,13 @@ const withBase = (target: string) => {
       linear-gradient(145deg, rgba(16, 28, 46, 0.95), rgba(12, 18, 31, 0.95));
   }
 
+  :root[data-theme='light'] .hero {
+    background:
+      radial-gradient(circle at 18% 20%, rgba(0, 122, 150, 0.15), transparent 45%),
+      radial-gradient(circle at 80% 0%, rgba(0, 122, 150, 0.14), transparent 42%),
+      linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(237, 244, 255, 0.95));
+  }
+
   .hero::after {
     content: '';
     position: absolute;
@@ -96,6 +103,10 @@ const withBase = (target: string) => {
     height: 420px;
     background: radial-gradient(circle, rgba(116, 240, 255, 0.14), transparent 62%);
     pointer-events: none;
+  }
+
+  :root[data-theme='light'] .hero::after {
+    background: radial-gradient(circle, rgba(0, 122, 150, 0.14), transparent 62%);
   }
 
   .kicker {
